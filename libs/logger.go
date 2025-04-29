@@ -38,3 +38,9 @@ func CreateLogger() *zap.Logger {
 
 	return zap.Must(config.Build())
 }
+
+func logmaker() *zap.Logger {
+	logger := CreateLogger()
+	defer logger.Sync()
+	return logger
+}
